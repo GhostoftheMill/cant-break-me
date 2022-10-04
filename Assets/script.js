@@ -33,7 +33,21 @@ function getPasswordOps() {
     alert('Maximum of 128 characters'); return null;
   }
   
+  var passwordOps = {
+    length: length, hasLowerChars, hasUpperChars, hasNumChars, hasSpecChars, 
+  };
 
+  var hasLowerChars = confirm('Click Yes to confirm lowercase characters');
+  var hasUpperChars = confirm('Click Yes to confirm uppercase characters');
+  var hasNumChars = confirm('Click Yes to confirm numerical characters');
+  var hasSpecChars = confirm('Click Yes to confirm special characters');
+
+  return passwordOps;
+  }
+
+function generatePassword() {
+  var ops = getPasswordOps();
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
