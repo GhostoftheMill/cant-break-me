@@ -33,8 +33,9 @@ function getPasswordOps() {
     alert('Maximum of 128 characters'); return null;
   }
   
+  
   var passwordOps = {
-    length: length, hasLowerChars, hasUpperChars, hasNumChars, hasSpecChars, 
+    length: length, hasLowerChars: hasLowerChars, hasUpperChars: hasUpperChars, hasNumChars: hasNumChars, hasSpecChars: hasSpecChars, 
   };
 
   var hasLowerChars = confirm('Click Yes to confirm lowercase characters');
@@ -47,7 +48,39 @@ function getPasswordOps() {
 
 function generatePassword() {
   var ops = getPasswordOps();
+  var result = [];
+  var possChars = [];
+  var guarChars = [];
+
+  if (options.hasLowerChars){
+    possChars = possChars.concat(lowerChars)
+    guarChars = guarChars.concat(lowerChars)
+  }
+
+  if (options.hasUpperChars){
+    possChars = possChars.concat(upperChars)
+    guarChars = guarChars.concat(upperChars)
+  }
+
+  if (options.hasNumChars){
+    possChars = possChars.concat(numChars)
+    guarChars = guarChars.concat(numChars)
+  }
+
+  if (options.hasSpecChars){
+    possChars = possChars.concat(specChars)
+    guarChars = guarChars.concat(specChars)
+  }
+
+  for (var i=0; i < options.length; i++) {
+    var possChars = getRandom(possChars);
+    result.push(possChars)
+  }
+
+  for (var i=0; i < guarChars.length; i++) {
+    result [i] = guarChars[i];
 }
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
