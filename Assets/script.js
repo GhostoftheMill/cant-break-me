@@ -9,9 +9,30 @@ var numChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 var specChars = {'!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '~', '`', '|', '}', '{', '[', ']', ':', ';', '?', '>', '<', ',', '.', '/', '-', '=',
 }
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
+function getRandom(arr) {
+  var randIndex = Math.floor(Math.random() * arr.length);
+  var randElement = arr(randIndex);
+  return randElement;
+}
+
+function getPasswordOps() {
+  var length = parseInt(prompt(Number of characters, 8-128);
+
+  if (Number.isNaN(length)) {
+    alert('Length must be provided numerically'); return null;
+  }
+
+  if (length <8) {
+    alert('Minimum of 8 characters'); return null;
+  }
+
+  if (length >128) {
+    alert('Maximum of 128 characters'); return null;
+  }
+  
 
 // Write password to the #password input
 function writePassword() {
