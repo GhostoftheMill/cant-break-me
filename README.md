@@ -1,15 +1,18 @@
-#Kevin White's Password Generator Refactor
+#Kevin White's Password Generator JavaScript Challenge
 
+# Kevin White's Password Generator
+<img src=./assets/preview.jpg>
 
-<section>
-<article>
-<h2>A general description of the system or project
+<h2><b>Introduction</b></h2>
 
-<article>
-<h2>A guide to installation and use
+The purpose of this project was to write JavaScript to create a functional password generator.  Currently there is an issue with the generate button that I haven't solved ... YET. 
 
-A list of technology used and any links to further information related to this technology
-Open-source projects that the developers independently modify or expand should be contained in a section on “desired collaboration” in the readme.md file. How should problems be handled? How should developers advance the changes?
-Known bugs and any bug fixes
-FAQ section with all previously asked questions
-Copyright and licensing information
+<h2><b>How to View</b></h2>
+
+URL: https://ghostofthemill.github.io/cant-break-me/
+
+GitHub Repo: https://github.com/GhostoftheMill/cant-break-me
+
+<h2><b>Acknowledgments</b></h2>
+
+Starter code source: https://github.com/coding-boot-camp/friendly-parakeet
