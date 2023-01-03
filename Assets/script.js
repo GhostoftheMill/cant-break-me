@@ -64,23 +64,22 @@ function generatePassword() {
 
   //var merged = possChars.reduce();
   console.log(typeof possChars);
+  console.log(possChars);
   var merged = possChars.join('');
   console.log(typeof merged);
+  console.log(merged);
 
   //works to here, possChars is single string, 
 
   for (var i=0; i < options['length']; i++) {
     var userPswd = getRandom(merged);
-    //JSON.stringify(userPswd);
     result.push(userPswd);
+    
   }
 
-  console.log(result);
-  console.log(typeof result);
+  result = result.join('');
   return result;
-  
 }
-
 
 //Starter code below this point
 
