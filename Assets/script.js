@@ -1,24 +1,31 @@
-// Assignment code here
-// All possible characters for password
-var lowerChars = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z,];
+//defines variables for all acceptable password characters
+//var lowerChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
+//var upperChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',];
+//var numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,];
+//var specChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '_', '~', '[', ']', '{', '}', '<', '>', '?', '/',]
+const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const numChars = '0123456789';
+const specChars = '~!@#$%^&*()_+=-[]{}?';
 
-var upperChars = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,];
-
-var numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,];
-
-var specChars = [A, B, C,];
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
+/*creates function that accepts an array as its parameter, 
+creates two variables in function,
+first variable creates random whole number between 0 & length of array
+second variable calls array with randomly created index position
+returns a character from called array
+*/
 function getRandom(arr) {
   var randIndex = Math.floor(Math.random() * arr.length);
-  var randElement = arr(randIndex);
+  var randElement = arr[randIndex];
   return randElement;
 }
 
+/*creates function for user inputed password criteria 
+password has min 8 characters, max 128
+*/
 function getPasswordOps() {
-  var length = parseInt(prompt('Number of characters, 8-128'));
+  var length = parseInt(
+    prompt('Number of characters, 8-128'));
 
   if (Number.isNaN(length)) {
     alert('Length must be provided numerically'); return null;
@@ -30,64 +37,63 @@ function getPasswordOps() {
 
   if (length >128) {
     alert('Maximum of 128 characters'); return null;
-  }
-  
-  
-  var passwordOps = {
-    length: length, hasLowerChars: hasLowerChars, hasUpperChars: hasUpperChars, hasNumChars: hasNumChars, hasSpecChars: hasSpecChars, 
-  };
+  } 
 
+  // creates series of yes/no prompts that return boolean response
   var hasLowerChars = confirm('Click Yes to confirm lowercase characters');
   var hasUpperChars = confirm('Click Yes to confirm uppercase characters');
   var hasNumChars = confirm('Click Yes to confirm numerical characters');
   var hasSpecChars = confirm('Click Yes to confirm special characters');
 
+  var passwordOps = {
+    'length': length, 'hasLowerChars': hasLowerChars, 'hasUpperChars': hasUpperChars, 'hasNumChars': hasNumChars, 'hasSpecChars': hasSpecChars, 
+  };
+  //returns object that stores user's inputed responses
   return passwordOps;
-  }
-
-function generatePassword() {
-  var ops = getPasswordOps();
-  var result = [];
-  var possChars = [];
-  var guarChars = [];
-
-  if (options.hasLowerChars){
-    possChars = possChars.concat(lowerChars)
-    guarChars = guarChars.concat(lowerChars)
-  }
-
-  if (options.hasUpperChars){
-    possChars = possChars.concat(upperChars)
-    guarChars = guarChars.concat(upperChars)
-  }
-
-  if (options.hasNumChars){
-    possChars = possChars.concat(numChars)
-    guarChars = guarChars.concat(numChars)
-  }
-
-  if (options.hasSpecChars){
-    possChars = possChars.concat(specChars)
-    guarChars = guarChars.concat(specChars)
-  }
-
-  for (var i=0; i < options.length; i++) {
-    var possChars = getRandom(possChars);
-    result.push(possChars)
-  }
-
-  for (var i=0; i < guarChars.length; i++) {
-    result [i] = guarChars[i];
 }
 
-// Write password to the #password input
+function generatePassword() {
+  var options = getPasswordOps();
+  var result = [,];
+  var possChars = [,];
+
+  options['hasLowerChars'] === true ? possChars.push(lowerChars) : console.log('User hates lowercase'); 
+  options['hasUpperChars'] === true ? possChars.push(upperChars) : console.log('User hates uppercase');
+  options['hasNumChars'] === true ? possChars.push(numChars) : console.log('User hates numbers');
+  options['hasSpecChars'] === true ? possChars.push(specChars) : console.log('User hates special characters');
+
+  //var merged = possChars.reduce();
+  console.log(typeof possChars);
+  var merged = possChars.join('');
+  console.log(typeof merged);
+
+  //works to here, possChars is single string, 
+
+  for (var i=0; i < options['length']; i++) {
+    var userPswd = getRandom(merged);
+    //JSON.stringify(userPswd);
+    result.push(userPswd);
+  }
+
+  console.log(result);
+  console.log(typeof result);
+  return result;
+  
+}
+
+
+//Starter code below this point
+
+//defines variable that selects button with generate id
+var generateBtn = document.querySelector("#generate");
+
+// creates function that passes created password in password id element
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
-// Add event listener to generate button
+// code to start password creation process when user clicks button, generatePassword is hoisted as parameter
 generateBtn.addEventListener("click", writePassword);
