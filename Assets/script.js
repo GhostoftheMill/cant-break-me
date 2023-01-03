@@ -22,7 +22,7 @@ password has min 8 characters, max 128
 */
 function getPasswordOps() {
   var length = parseInt(
-    prompt('Number of characters, 8-128'));
+    prompt('Enter a number between 8-128. Click "OK".'));
 
   if (Number.isNaN(length)) {
     alert('Length must be provided numerically'); return null;
@@ -37,10 +37,10 @@ function getPasswordOps() {
   } 
 
   // creates series of yes/no prompts that return boolean response
-  var hasLowerChars = confirm('Click Yes to confirm lowercase characters');
-  var hasUpperChars = confirm('Click Yes to confirm uppercase characters');
-  var hasNumChars = confirm('Click Yes to confirm numerical characters');
-  var hasSpecChars = confirm('Click Yes to confirm special characters');
+  var hasLowerChars = confirm('Do you want lowercase characters? Click "OK" for "yes". Click "Cancel" for "no".');
+  var hasUpperChars = confirm('Do you want uppercase characters? Click "OK" for "yes". Click "Cancel" for "no".');
+  var hasNumChars = confirm('Do you want numerical characters? Click "OK" for "yes". Click "Cancel" for "no".');
+  var hasSpecChars = confirm('Do you want special characters? Click "OK" for "yes". Click "Cancel" for "no".');
 
   if (!hasLowerChars && !hasUpperChars && !hasNumChars && !hasSpecChars ) {
     alert('Pardon us but what are you doing? Try again.'); return null;
