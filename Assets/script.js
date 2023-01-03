@@ -1,19 +1,16 @@
 //defines variables for all acceptable password characters
-//var lowerChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
-//var upperChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',];
-//var numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,];
-//var specChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '_', '~', '[', ']', '{', '}', '<', '>', '?', '/',]
+/* old code
+var lowerChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
+var upperChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',];
+var numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,];
+var specChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '_', '~', '[', ']', '{', '}', '<', '>', '?', '/',]
+*/
 const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
 const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const numChars = '0123456789';
 const specChars = '~!@#$%^&*()_+=-[]{}?';
 
-/*creates function that accepts an array as its parameter, 
-creates two variables in function,
-first variable creates random whole number between 0 & length of array
-second variable calls array with randomly created index position
-returns a character from called array
-*/
+//gets random element
 function getRandom(arr) {
   var randIndex = Math.floor(Math.random() * arr.length);
   var randElement = arr[randIndex];
@@ -45,9 +42,14 @@ function getPasswordOps() {
   var hasNumChars = confirm('Click Yes to confirm numerical characters');
   var hasSpecChars = confirm('Click Yes to confirm special characters');
 
+  if (!hasLowerChars && !hasUpperChars && !hasNumChars && !hasSpecChars ) {
+    alert('Pardon us but what are you doing? Try again.'); return null;
+  }
+
   var passwordOps = {
     'length': length, 'hasLowerChars': hasLowerChars, 'hasUpperChars': hasUpperChars, 'hasNumChars': hasNumChars, 'hasSpecChars': hasSpecChars, 
   };
+
   //returns object that stores user's inputed responses
   return passwordOps;
 }
@@ -63,18 +65,11 @@ function generatePassword() {
   options['hasSpecChars'] === true ? possChars.push(specChars) : console.log('User hates special characters');
 
   //var merged = possChars.reduce();
-  console.log(typeof possChars);
-  console.log(possChars);
   var merged = possChars.join('');
-  console.log(typeof merged);
-  console.log(merged);
-
-  //works to here, possChars is single string, 
 
   for (var i=0; i < options['length']; i++) {
     var userPswd = getRandom(merged);
     result.push(userPswd);
-    
   }
 
   result = result.join('');
