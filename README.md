@@ -1,7 +1,7 @@
 #Kevin White's Password Generator JavaScript Challenge
 
 # Kevin White's Password Generator
-<img src=./assets/generated.jpg>
+<img src=./Assets/generated.jpg>
 
 <h2><b>Introduction</b></h2>
 
