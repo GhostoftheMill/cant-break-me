@@ -1,11 +1,11 @@
 #Kevin White's Password Generator JavaScript Challenge
 
 # Kevin White's Password Generator
-<img src=./assets/preview.jpg>
+<img src=./assets/generated.jpg>
 
 <h2><b>Introduction</b></h2>
 
-The purpose of this project was to write JavaScript to create a functional password generator.  Currently there is an issue with the generate button that I haven't solved ... YET. 
+The purpose of this project was to write JavaScript to create a functional password generator.  By clicking "Generage Password" a user is presented with a series of prompts that eventually generates a password that matches the user's criteria.
 
 <h2><b>How to View</b></h2>
 
